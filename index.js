@@ -16,7 +16,7 @@ const getUser = (id) => {
   setTimeout(() => {
     console.log("reading from database");
     return { id: id, githubusername: "sameer" };
-  }, 1000);
+  }, 1000)
 };
 
 getUser(1);
