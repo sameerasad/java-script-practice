@@ -18,7 +18,14 @@ const getUser = (id, callback) => {
     callback({ id: id, githubusername: "sameer" });
   }, 1000);
 };
+const getRepos = (callback) => {
+  setTimeout(() => callback(["repo1", "repo2", "repo3"]), 2000);
+};
 
 getUser(1, function (user) {
   console.log("user", user);
+});
+
+getRepos((repos) => {
+  console.log("repos:", repos);
 });
