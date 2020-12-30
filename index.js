@@ -12,11 +12,13 @@ callback();
 
 console.log("after");
 
-const getUser = (id) => {
+const getUser = (id, callback) => {
   setTimeout(() => {
     console.log("reading from database");
-    return { id: id, githubusername: "sameer" };
-  }, 1000)
+    callback({ id: id, githubusername: "sameer" });
+  }, 1000);
 };
 
-getUser(1);
+getUser(1, function (user) {
+  console.log("user", user);
+});
