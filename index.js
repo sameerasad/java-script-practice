@@ -32,3 +32,6 @@ getUser(1).then((user) =>
       console.log(err.message);
     })
 );
+getCommits().then((res) => console.log(res));
+getRepos().then((res) => console.log(res));
+getUser(1).then((res) => console.log(res));
