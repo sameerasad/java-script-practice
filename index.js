@@ -22,7 +22,7 @@ const getCommits = () => {
     resolve(["commit1", "commit2"]);
   });
 };
-
+//promise approach
 getUser(1).then((user) =>
   getRepos(user.githubusername)
     .then((repos) => getCommits(repos[0]))
@@ -32,6 +32,23 @@ getUser(1).then((user) =>
       console.log(err.message);
     })
 );
+
+// async and await approach
+
+async function diplayCommit() {
+  try {
+    const user = await getUser(1);
+    const repo = await getRepos(user.githubusername);
+    const commit = await getCommits(repo);
+    console.log(commit);
+    console.log(repo);
+  } catch (err) {
+    console.log(err.message);
+  }
+}
+
 getCommits().then((res) => console.log(res));
 getRepos().then((res) => console.log(res));
 getUser(1).then((res) => console.log(res));
+
+diplayCommit();
