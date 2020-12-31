@@ -1,31 +1,22 @@
-function callback() {
-  setTimeout(() => {
-    console.log("welcome to the async java script");
-  }, 2000);
-}
-
-setTimeout(() => {
-  console.log("this is the async javascript");
-}, 1500);
-
-callback();
-
 console.log("after");
 
-const getUser = (id, callback) => {
-  setTimeout(() => {
-    console.log("reading from database");
-    callback({ id: id, githubusername: "sameer" });
-  }, 1000);
-};
-const getRepos = (callback) => {
-  setTimeout(() => callback(["repo1", "repo2", "repo3"]), 2000);
+const getUser = (id) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log("reading from database");
+      resolve({ id: id, githubusername: "sameer" });
+    }, 1000);
+  });
 };
 
-getUser(1, function (user) {
-  console.log("user", user);
-});
+const getRepos = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(["repo1", "repo2"]);
+    }, 2000);
+  });
+};
 
-getRepos((repos) => {
-  console.log("repos:", repos);
-});
+getUser(1);
+
+getRepos(1);
