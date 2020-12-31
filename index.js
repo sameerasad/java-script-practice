@@ -9,7 +9,7 @@ const getUser = (id) => {
   });
 };
 
-const getRepos = () => {
+const getRepos = (username) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(["repo1", "repo2"]);
@@ -17,6 +17,18 @@ const getRepos = () => {
   });
 };
 
-getUser(1);
+const getCommits = () => {
+  return new Promise((resolve, reject) => {
+    resolve(["commit1", "commit2"]);
+  });
+};
 
-getRepos(1);
+getUser(1).then((user) =>
+  getRepos(user.githubusername)
+    .then((repos) => getCommits(repos[0]))
+    .then((commits) => console.log(commits[0]))
+
+    .catch((err) => {
+      console.log(err.message);
+    })
+);
