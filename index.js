@@ -39,7 +39,7 @@ async function diplayCommit() {
   try {
     const user = await getUser(1);
     const repo = await getRepos(user.githubusername);
-    const commit = await getCommits(repo);
+    const commit = await getCommits(commit[0]);
     console.log(commit);
     console.log(repo);
   } catch (err) {
