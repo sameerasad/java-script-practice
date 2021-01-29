@@ -42,6 +42,7 @@ async function diplayCommit() {
     const commit = await getCommits(commit[0]);
     console.log(commit);
     console.log(repo);
+    console.log(repo) 
   } catch (err) {
     console.log(err.message);
   }
